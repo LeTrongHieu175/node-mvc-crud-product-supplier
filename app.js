@@ -6,12 +6,16 @@ const path = require("path");
 const supplierRoutes = require("./routes/supplierRoutes");
 const productRoutes = require("./routes/productRoutes");
 
+const { swaggerUi, swaggerSpec } = require('./swagger');
 const app = express();
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
+
+// Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // View engine
 app.set("view engine", "ejs");
