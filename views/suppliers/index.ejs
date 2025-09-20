@@ -1,0 +1,13 @@
+<%- include("../partials/header") %>
+<h1>Suppliers</h1>
+<a href="/suppliers/new">Add Supplier</a>
+<ul>
+  <% suppliers.forEach(s => { %>
+    <li>
+      <%= s.name %> - <%= s.address %> - <%= s.phone %>
+      <a href="/suppliers/<%= s._id %>/edit">Edit</a> |
+      <a href="/suppliers/<%= s._id %>/delete">Delete</a>
+    </li>
+  <% }) %>
+</ul>
+<%- include("../partials/footer") %>
